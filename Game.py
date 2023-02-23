@@ -22,3 +22,5 @@ def run_game():
         pygame.display.flip
 
 run_game()
+
+print("Hello world")

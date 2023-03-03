@@ -19,7 +19,8 @@ def run_game():
 
         screen.fill(bg_color)
         model.output()
-        pygame.display.flip
+        pygame.display.flip()
+        pygame.time.Clock().tick(60)
 
 run_game()
 

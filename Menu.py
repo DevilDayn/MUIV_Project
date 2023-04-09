@@ -1,25 +1,52 @@
 import pygame
+from Variables import window_size
 
+pygame.init()
 class Menu:
-    def __init__(self):
-        self.option_surface = []
-        self.callbacks = []
-        self.current_option_index = 0
 
-    def append_option(self,option, callback):
+    def __init__(self, items, font, font_size, font_color, x, y):
+        self.items = items
+        self.font = pygame.font.Font(font, font_size)
+        self.font_color = font_color
+        self.x = x
+        self.y = y
 
-    def swich(self, direction):
-        self.current_option_index = max(0, min(self.current_option_index + direction, len(self.option_surface) - 1))
+    def draw(self, surface):
+        for index, item in enumerate(self.items):
+            label = self.font.render(item, True, self.font_color)
+            width = label.get_width()
+            height = label.get_height()
 
-    def select(self):
-        self.callbacks[self.current_option_index]()
+            x_pos = self.x - ((width / 2))
+            y_pos = self.y + ((index * height))
 
-    def draw(self, surf, x, y, option_y_paddiong):
-        for i, option in enumerate(self.option_surface):
-            option_rect = option.get_rect()
-            option_rect.topleft = (x, y + 1 * option_y_paddiong)
-            if i == self.current_option_index:
-                draw.rect(surf, (0, 0, 0), option_rect)
-            surf.blit(option, option_rect)
+            mouse_pos = pygame.mouse.get_pos()
+            mouse_pressed = pygame.mouse.get_pressed()
 
-menu = Menu()
+            if mouse_pressed[0]:
+                if menu_x - (height / 2) < mouse_pos[0] < menu_x + (width / 2):
+                    if menu_y < mouse_pos[1] < menu_y + height:
+                        print("Start Game clicked")
+                elif menu_y + height < mouse_pos[1] < menu_y + (height * 2):
+                    print("Options clicked")
+                elif menu_y + (height * 2) < mouse_pos[1] < menu_y + (height * 3):
+                    pygame.quit()
+
+            surface.blit(label, (x_pos, y_pos))
+
+
+
+
+menu_items = ["Start Game", "Options", "Exit"]
+menu_font = 'freesansbold.ttf'
+menu_font_size = 36
+menu_font_color = (255, 255, 255)
+menu_x = window_size[0] / 2
+menu_y = window_size[1] / 2
+
+menu_draw = Menu(menu_items, menu_font, menu_font_size, menu_font_color, menu_x, menu_y)
+
+
+
+
+

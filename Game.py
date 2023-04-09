@@ -1,16 +1,17 @@
 import pygame
 import sys
-from Player import Player_model
-
+from Menu import *
+from Variables import window_size
 
 def run_game():
 
 
     pygame.init()
-    screen = pygame.display.set_mode((1200, 800))
-    pygame.display.set_caption("Анигеляторная пушка")
-    bg_color = (255, 255, 255)
-    model = Player_model(screen)
+
+    size = (1200, 800)
+    screen = pygame.display.set_mode((window_size))
+    pygame.display.set_caption("Rock' em , Suck' em")
+    bg_color = (0, 0, 0)
 
     while True:
         for event in pygame.event.get():
@@ -18,9 +19,11 @@ def run_game():
                 sys.exit()
 
         screen.fill(bg_color)
-        model.output()
+
+        menu_draw.draw(screen)
+
         pygame.display.flip()
-        pygame.time.Clock().tick(60)
+
 
 
 

@@ -1,25 +1,29 @@
 import pygame
 from Button import *
-
+from Variables import *
 from Menu_buttons import *
 pygame.init()
 
-screen_width = 100
-screen_height = 100
 
-screen = pygame.display.set_mode((100, 100))
+
+screen = pygame.display.set_mode((screen_width, screen_height), pygame.RESIZABLE)
 pygame.display.set_caption("Game on python")
 
 start_img = pygame.image.load('Assets/start_btn.png').convert_alpha()
 exit_img = pygame.image.load('Assets/exit_btn.png').convert_alpha()
+load_img = pygame.image.load('Assets/settings_btn.png').convert_alpha()
+settings_img = pygame.image.load('Assets/load_btn.png').convert_alpha()
 background_image = pygame.image.load('Assets/back.jpg')
 
 
 FPS = pygame.time.Clock()
 fps = 60
 
-button_play = Start_button((screen_height//2) * 1, (screen_width//2) * 3, start_img, 0.7)
-button_exit = Start_button((screen_height//2) * 2, (screen_width//2) * 3, start_img, 0.7)
+button_play = Start_button((screen_width//5) * 1, (screen_height//4) * 3, start_img, 0.7)
+button_load = Load_button((screen_width//5) * 2, (screen_height//4) * 3, load_img, 0.7)
+button_settings = Setiings_button((screen_width//5) * 3, (screen_height//4) * 3, settings_img, 0.7)
+button_exit = Exit_button((screen_width//5) * 4, (screen_height//4) * 3, exit_img, 0.7)
+
 
 
 Game_is_running = True
@@ -34,6 +38,8 @@ while Game_is_running:
 
     button_play.draw(screen)
     button_exit.draw(screen)
+    button_load.draw(screen)
+    button_settings.draw(screen)
 
 
     pygame.display.update()

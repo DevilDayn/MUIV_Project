@@ -1,6 +1,6 @@
 import pygame
 
 
-screen_height = 800
-screen_width = 1200
+screen_height = 1080
+screen_width = 1920
 

@@ -41,7 +41,6 @@ while Game_is_running:
     button_load.draw(screen)
     button_settings.draw(screen)
 
-
     pygame.display.update()
 
 pygame.quit()

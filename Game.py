@@ -1,6 +1,7 @@
 import pygame
 from Button import *
 from Variables import *
+
 from Menu_buttons import *
 pygame.init()
 
@@ -19,10 +20,10 @@ background_image = pygame.image.load('Assets/back.jpg')
 FPS = pygame.time.Clock()
 fps = 60
 
-button_play = Start_button((screen_width//5) * 1, (screen_height//4) * 3.5, start_img, 0.7)
-button_load = Load_button((screen_width//5) * 2, (screen_height//4) * 3.5, load_img, 0.7)
-button_settings = Setiings_button((screen_width//5) * 3, (screen_height//4) * 3.5, settings_img, 0.7)
-button_exit = Exit_button((screen_width//5) * 4, (screen_height//4) * 3.5, exit_img, 0.7)
+button_play = Start_button((screen_width//5) * 1, (screen_height//4) * 3, start_img, 1)
+button_load = Load_button((screen_width//5) * 2, (screen_height//4) * 3, load_img, 1)
+button_settings = Setiings_button((screen_width//5) * 3, (screen_height//4) * 3, settings_img, 1)
+button_exit = Exit_button((screen_width//5) * 4, (screen_height//4) * 3, exit_img, 1)
 
 
 

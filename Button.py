@@ -4,9 +4,10 @@ pygame.display.set_mode((screen_height, screen_width))
 
 
 class Button:
-    def __init__(self, x, y, image, scale):
+    def __init__(self, x, y, image, screen):
         width = image.get_width()
         height = image.get_height()
+        scale = (screen_width**2 + screen_height**2)/(1920**2 + 1080**2)
         self.image = pygame.transform.scale(image, (int(width * scale), int(height * scale)))
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)

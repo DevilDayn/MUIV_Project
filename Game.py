@@ -20,20 +20,32 @@ background_image = pygame.image.load('Assets/back.jpg')
 FPS = pygame.time.Clock()
 fps = 60
 
-button_play = Start_button((screen_width//5) * 1, (screen_height//4) * 3, start_img, 1)
-button_load = Load_button((screen_width//5) * 2, (screen_height//4) * 3, load_img, 1)
-button_settings = Setiings_button((screen_width//5) * 3, (screen_height//4) * 3, settings_img, 1)
-button_exit = Exit_button((screen_width//5) * 4, (screen_height//4) * 3, exit_img, 1)
+button_play = Start_button((screen_width//5) * 1, (screen_height//4) * 3, start_img)
+button_load = Load_button((screen_width//5) * 2, (screen_height//4) * 3, load_img)
+button_settings = Settings_button((screen_width//5) * 3, (screen_height//4) * 3, settings_img)
+button_exit = Exit_button((screen_width//5) * 4, (screen_height//4) * 3, exit_img)
 
+def main_menu():
+    button_play.draw(screen)
+    button_exit.draw(screen)
+    button_load.draw(screen)
+    button_settings.draw(screen)
 
+def setting_menu():
+    button_exit.draw(screen)
 
-Game_is_running = True
-while Game_is_running:
+Main_menu_is_running = True
+Settings_menu_is_running = False
+Load_menu_is_running = False
+Start_menu_is_running = False
+
+while Main_menu_is_running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            Game_is_running = False
+            Main_menu_is_running = False
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-            Game_is_running = False
+            Main_menu_is_running = False
+
 
     screen.blit(background_image, (0, 0))
 
@@ -41,6 +53,37 @@ while Game_is_running:
     button_exit.draw(screen)
     button_load.draw(screen)
     button_settings.draw(screen)
+
+    pygame.display.update()
+
+
+while Settings_menu_is_running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            Settings_menu_is_running = False
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            Settings_menu_is_running = False
+
+    screen.blit(background_image, (0, 0))
+
+    setting_menu()
+
+    pygame.display.update()
+
+
+while Load_menu_is_running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            Main_menu_is_running = False
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            Main_menu_is_running = False
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_s:
+            Main_menu_is_running = False
+            Settings_menu_is_running = True
+
+    screen.blit(background_image, (0, 0))
+
+    main_menu()
 
     pygame.display.update()
 

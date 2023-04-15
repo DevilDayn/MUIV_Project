@@ -1,6 +1,8 @@
-import pygame
+import win32api
+
+monitor = win32api.EnumDisplayMonitors()[0][0]
 
 
-screen_height = 1080
-screen_width = 1920
+screen_width = int(win32api.GetMonitorInfo(monitor)['Monitor'][2])
+screen_height = int(win32api.GetMonitorInfo(monitor)['Monitor'][3])
 

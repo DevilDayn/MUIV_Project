@@ -1,5 +1,4 @@
 import pygame
-
 from Button import *
 
 class Exit_button(Button):
@@ -10,10 +9,16 @@ class Start_button(Button):
     def action(self):
         print('Game start')
 
-class Setiings_button(Button):
+class Settings_button(Button):
     def action(self):
-        print('Settings')
+        if self.clicked == True:
+            pass
+
 
 class Load_button(Button):
     def action(self):
         print('Load')
+
+class Back_button(Button):
+    def action(self):
+        pass
